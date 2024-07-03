@@ -6,7 +6,7 @@
 /*   By: lkilpela <lkilpela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 14:57:48 by lkilpela          #+#    #+#             */
-/*   Updated: 2024/02/02 12:09:33 by lkilpela         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:47:06 by lkilpela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdarg.h>
+
+# ifdef __linux__
+#  include <stdint.h>
+# endif
 
 typedef struct s_list
 {
