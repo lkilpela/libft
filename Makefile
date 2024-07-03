@@ -87,10 +87,10 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$[(NAME)] $(GREEN)Everything deleted.$(RESET)"
+	@echo "$[$(NAME)] $(GREEN)Everything deleted.$(RESET)"
 
 re: fclean all
-	@echo "$[(NAME)] $(GREEN)Everything rebuilt.$(RESET)"
+	@echo "$[$(NAME)] $(GREEN)Everything rebuilt.$(RESET)"
 
 .PHONY: all clean fclean re
 
