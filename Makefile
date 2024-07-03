@@ -3,7 +3,7 @@ NAME		=	libft.a
 CC			=	cc
 CCFLAGS		=	-Wall -Wextra -Werror
 CC_DEBUG	=	-g #-fsanitize=leak
-BUILD_DIR	=	build
+OBJ_DIR		=	./obj
 INCLUDES	=	./include
 HDRS		=	-I $(INCLUDES)
 CC_FULL		=	$(CC) $(CCFLAGS) $(HDRS) $(CC_DEBUG)
@@ -63,7 +63,7 @@ SRCS		=	ft_isalnum.c \
 				ft_atoi.c
 
 LIBFT_DIR	=	./src
-OBJS		=	$(addprefix $(BUILD_DIR)/, $(SRCS:%.c=%.o))
+OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 # vpath for finding source files
 vpath %.c $(LIBFT_DIR) $(LIBFT_DIR)/character $(LIBFT_DIR)/list \
@@ -71,7 +71,7 @@ vpath %.c $(LIBFT_DIR) $(LIBFT_DIR)/character $(LIBFT_DIR)/list \
 
 all: $(NAME)
 
-$(BUILD_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(@D)
 	@$(CC_FULL) -c $< -o $@ 
 	
@@ -82,15 +82,15 @@ $(NAME): $(OBJS)
 	@echo "--------------------------------------------"
 
 clean:
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(OBJ_DIR)
 	@echo "[$(NAME)] $(GREEN)Object files cleaned.$(RESET)"
 
 fclean: clean
 	@rm -rf $(NAME)
-	@echo "$[$(NAME)] $(GREEN)Everything deleted.$(RESET)"
+	@echo "[$(NAME)] $(GREEN)Everything deleted.$(RESET)"
 
 re: fclean all
-	@echo "$[$(NAME)] $(GREEN)Everything rebuilt.$(RESET)"
+	@echo "[$(NAME)] $(GREEN)Everything rebuilt.$(RESET)"
 
 .PHONY: all clean fclean re
 
